@@ -1,0 +1,17 @@
+pip3 install django
+pip3 install install django-celery-beat
+
+
+python3 manage.py createsuperuser  ### admin
+
+
+进入项目目录：
+命令行启动：  beat 只能启动一个
+celery -A celery_dj beat -l info -S django ## 启动定时器
+celery -A celery_dj worker -l info ## 启动worker
+
+后台启动：
+celery multi start  -A  celery_dj worker -l info
+
+关闭后台：
+celery multi stop -A celery_dj worker -l info
